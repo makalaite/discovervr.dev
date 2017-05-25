@@ -2,7 +2,10 @@
 
 use App\Models\VrCategories;
 
+use App\Models\VrCategoriesTranslations;
+use App\Models\VrLanguageCodes;
 use Illuminate\Routing\Controller;
+use Ramsey\Uuid\Uuid;
 
 class VrCategoriesController extends Controller {
 
@@ -14,11 +17,12 @@ class VrCategoriesController extends Controller {
 	 */
 	public function index()
 	{
-		//
-		$config = [];
+        $dataFromModel = new VrCategories();
+        $config = [];
+        $config = $this->listBladeData();
+        $config['list'] = $dataFromModel->get()->toArray();
 		$config['categories'] = VrCategories::get()->toArray();
-
-
+		return view('admin.page.list', $config);
 	}
 
 	/**
@@ -29,8 +33,11 @@ class VrCategoriesController extends Controller {
 	 */
 	public function create()
 	{
+        $config = [];
 
-        return view('admin.page.create');
+        $config['lang'] = VrLanguageCodes::pluck('language_code', 'id')->toArray();
+        //dd($config['lang']);
+        return view('admin.page.create', $config);
 
 	}
 
@@ -42,7 +49,15 @@ class VrCategoriesController extends Controller {
 	 */
 	public function store()
 	{
-		//
+       $config['categories'] = VrCategories::get()->toArray();
+       $data = request()->all();
+       VrCategories::create([
+               'id' => Uuid::uuid4(),
+               'name' => $data['name'],
+               //'comment' => $data['comment'],
+               'language_id' => $data['language_code']
+           ]);
+        return redirect()->route('app.categories.index', $config);
 	}
 
 	/**
@@ -54,7 +69,11 @@ class VrCategoriesController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+        $config = [];
+        $config = $this->listBladeData();
+        $config['categories'] = VrCategories::find($id)->toArray();
+
+        return view('admin.page.create', $config);
 	}
 
 	/**
@@ -66,7 +85,12 @@ class VrCategoriesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $config = [];
+        $config['route'] = 'app.categories.edit';
+        $config['id'] = $id;
+        $config['categories'] = VrCategories::find($id)->toArray();
+        $config['lang'] = VrLanguageCodes::pluck('language_code', 'id')->toArray();
+        return view('admin.page.create', $config);
 	}
 
 	/**
@@ -78,7 +102,22 @@ class VrCategoriesController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $config['categories'] = VrCategories::get()->toArray();
+        $data = request()->all();
+        $record = VrCategories::find($id);
+        $record->update(
+            [
+                'id' => Uuid::uuid4(),
+                'name' => $data['name'],
+                'comment' => $data['comment'],
+                'language_id' => $data['language_id']
+            ]
+        );
+
+        $translations = new VrCategoriesTranslations();
+        $translations->storeFromCategories($data);
+
+        return redirect()->route('app.categories.index', $config);
 	}
 
 	/**
@@ -90,7 +129,33 @@ class VrCategoriesController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        if (VrCategories::destroy($id)){
+            return ["success" => true, "id" => $id];
+        }
 	}
+
+    private function listBladeData() {
+        $config = [];
+
+        $config['edit'] = 'app.categories.edit';
+        $config['create'] = 'app.categories.create';
+        $config['show'] = 'app.categories.show';
+        $config['delete'] = 'app.categories.destroy';
+
+        return $config;
+    }
+
+    public function storeFromCategories()
+    {
+        $data = request()->all();
+        VrCategoriesTranslations::create([
+            'id' => $data['id'],
+            'name' => $data['name'],
+            'language_code' => $data['language_code'],
+            'category_id' => $data['category_id']
+        ]);
+
+
+    }
 
 }

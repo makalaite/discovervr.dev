@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin'], function (){
 
         Route::group(['prefix' => '{id}'], function () {
             Route::get('/', ['uses' => 'VrCategoriesController@show']);
+            Route::get('/show', ['as' => 'app.categories.show', 'uses' => 'VrCategoriesController@show']);
             Route::get('/edit', ['as' => 'app.categories.edit', 'uses' => 'VrCategoriesController@edit']);
             Route::post('/edit', ['uses' => 'VrCategoriesController@update']);
             Route::delete('/delete', ['as' => 'app.categories.destroy', 'uses' => 'VrCategoriesController@destroy']);
