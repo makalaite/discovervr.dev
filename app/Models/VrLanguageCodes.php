@@ -3,8 +3,12 @@
 namespace App\Models;
 
 
-class VrLanguageCodes extends CoreModel
+use Illuminate\Database\Eloquent\Model;
+
+class VrLanguageCodes extends Model
 {
+    public $incrementing = false;
+    public $updated_at = false;
     use UuidTrait;
 
     /**
@@ -16,5 +20,5 @@ class VrLanguageCodes extends CoreModel
      * Fillable column names
      * @var array
      */
-    protected $fillable = ['page_id', 'language_code'];
+    protected $fillable = ['id', 'page_id', 'language_code'];
 }
