@@ -14,13 +14,13 @@ class VrCategories extends CoreModel
      */
     protected $table = 'vr_categories';
     /**
-     * Fillable column names
+     * Fillable column names  
      * @var array
      */
     protected $fillable = ['id', 'name', 'comment', 'language_id'];
 
     public function categoryTranslation()
     {
-        return $this->belongsToMany(VrLanguageCodes::class, 'vr_categories_translations', 'category_id', 'language_code' );
+        return $this->belongsToMany(VrLanguageCodes::class, 'vr_categories_translations', 'category_id', 'language_code' )->withPivot('name');
     }
 }
