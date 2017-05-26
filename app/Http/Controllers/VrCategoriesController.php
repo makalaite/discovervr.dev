@@ -17,12 +17,12 @@ class VrCategoriesController extends Controller {
 	 */
 	public function index()
 	{
-        $dataFromModel = new VrCategories();
-        $config = [];
-        $config = $this->listBladeData();
-        $config['list'] = $dataFromModel->get()->toArray();
-		$config['categories'] = VrCategories::get()->toArray();
-		return view('admin.page.list', $config);
+//        $dataFromModel = new VrCategories();
+//        $config = [];
+//        $config = $this->listBladeData();
+//        $config['list'] = $dataFromModel->get()->toArray();
+		return VrCategories::with(['categoryTranslation'])->get()->toArray();
+//		return view('admin.page.list', $config);
 	}
 
 	/**
@@ -49,15 +49,21 @@ class VrCategoriesController extends Controller {
 	 */
 	public function store()
 	{
-       $config['categories'] = VrCategories::get()->toArray();
+
        $data = request()->all();
-       VrCategories::create([
+       $record = VrCategories::create([
                'id' => Uuid::uuid4(),
                'name' => $data['name'],
-               //'comment' => $data['comment'],
+               'comment' => $data['description'],
                'language_id' => $data['language_code']
            ]);
-        return redirect()->route('app.categories.index', $config);
+
+       $translations = new VrCategoriesTranslationsController();
+       $translations->storeFromVrCategoriesController($data, $record);
+
+
+
+        return redirect()->route('app.categories.index');
 	}
 
 	/**
@@ -73,7 +79,7 @@ class VrCategoriesController extends Controller {
         $config = $this->listBladeData();
         $config['categories'] = VrCategories::find($id)->toArray();
 
-        return view('admin.page.create', $config);
+        return view('admin.page.single', $config);
 	}
 
 	/**
@@ -88,8 +94,10 @@ class VrCategoriesController extends Controller {
         $config = [];
         $config['route'] = 'app.categories.edit';
         $config['id'] = $id;
-        $config['categories'] = VrCategories::find($id)->toArray();
+        $config['item'] = VrCategories::find($id)->toArray();
         $config['lang'] = VrLanguageCodes::pluck('language_code', 'id')->toArray();
+        //$config['trans'] = VrCategoriesTranslationsController::pluck('name','language_code', 'category_id', 'id')
+
         return view('admin.page.create', $config);
 	}
 
@@ -109,7 +117,7 @@ class VrCategoriesController extends Controller {
             [
                 'id' => Uuid::uuid4(),
                 'name' => $data['name'],
-                'comment' => $data['comment'],
+                'comment' => $data['description'],
                 'language_id' => $data['language_id']
             ]
         );
