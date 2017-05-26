@@ -17,7 +17,7 @@ class VrCategories extends CoreModel
      * Fillable column names  
      * @var array
      */
-    protected $fillable = ['id', 'name', 'comment', 'language_id'];
+    protected $fillable = ['id', 'comment'];
 
     public function categoryTranslation()
     {

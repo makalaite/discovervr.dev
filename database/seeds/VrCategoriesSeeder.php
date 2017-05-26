@@ -18,12 +18,12 @@ class VrCategoriesSeeder extends Seeder
     public function run()
     {
         $categories = [
-            ["name" => "Apie mus", "id" => "about", "language_id" => "LT"], //section describing concept of activity
-            ["name" => "Virtualūs kambariai", "id" => "virtual-rooms", "language_id" => "LT"], //separate rooms themes
-            ["name" => "Vieta ir laikas", "id" => "place-and-time", "language_id" => "LT"], //location of place
-            ["name" => "Bilietai", "id" => "tickets", "language_id" => "LT"],
-            ["name" => "Remėjai", "id" => "sponsors", "language_id" => "LT"],
-            ["name" => "Poraštės", "id" => "footer", "language_id" => "LT"],
+            ["id" => "about"], //section describing concept of activity
+            ["id" => "virtual-rooms"], //separate rooms themes
+            ["id" => "place-and-time"], //location of place
+            ["id" => "tickets"],
+            ["id" => "sponsors"],
+            ["id" => "footer"],
 
         ];
         DB::beginTransaction();

@@ -17,7 +17,6 @@ class CreateVrLanguageCodesTable extends Migration {
 			$table->integer('count', true);
 			$table->string('id', 36)->unique('id_UNIQUE');
 			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->string('page_id', 36);
 			$table->string('language_code', 3)->unique('language_code_UNIQUE');
 		});
 	}

@@ -18,4 +18,8 @@ class VrReservations extends CoreModel
      * @var array
      */
     protected $fillable = ['id', 'experience_id', 'order_id', 'time'];
+
+    public function experiences () {
+        return $this->hasOne(VrPages::class, 'id', 'page_id');
+    }
 }

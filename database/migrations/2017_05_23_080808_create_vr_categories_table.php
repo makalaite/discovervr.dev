@@ -18,9 +18,6 @@ class CreateVrCategoriesTable extends Migration {
 			$table->string('id', 36)->unique('id_UNIQUE');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->string('name');
-			$table->string('comment')->nullable();
-			$table->string('language_id', 36);
 		});
 	}
 

@@ -19,7 +19,7 @@ class CreateVrPagesTranslationsTable extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 			$table->string('page_id', 36)->index('fk_vr_pages_translations_vr_pages1_idx');
-			$table->string('language_code', 36)->index('fk_vr_pages_translations_vr_language_codes1_idx');
+			$table->string('language_code', 2)->index('fk_vr_pages_translations_vr_language_codes1_idx');
 			$table->string('title');
 			$table->text('description_short', 65535);
 			$table->text('description_long', 65535);

@@ -18,4 +18,8 @@ class VrOrder extends CoreModel
      * @var array
      */
     protected $fillable = ['id', 'status'];
+
+    public function experiences() {
+        return $this->belongsToMany(VrPages::class, 'vr_reservations', 'order_id', 'experience_id')->withPivot('time');
+    }
 }
