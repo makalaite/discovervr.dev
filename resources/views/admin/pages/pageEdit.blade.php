@@ -1,5 +1,3 @@
-
-
 @extends('base')
 @section('content')
 <div class="container">
@@ -33,7 +31,7 @@
                                     {{$key . ' ' . $translation['pivot']['language_code']}}
                                 </td>
                                 <td>
-                                    {{ Form::text($key  . '_' . $translation['pivot']['language_code'], $lang)}}
+                                    {{ Form::textArea($key  . '_' . $translation['pivot']['language_code'], $lang)}}
                                 </td>
                             </tr>
                         @endif
@@ -43,14 +41,11 @@
                 @foreach ($value['translation'] as $key => $translation)
                     @foreach ($translation['pivot'] as $key => $lang)
                         @if(!in_array($key, $ignore))
-                            <tr>
-                                <td>
-                                    {{'Category ' . $key . ' ' . $translation['pivot']['language_code']}}
-                                </td>
-                                <td>
-                                    {{ Form::text('category_' . $key . '_' . $translation['pivot']['language_code'], $lang)}}
-                                </td>
-                            </tr>
+                            @if($translation['pivot']['language_code'] == app()->getLocale())
+                                {{Form::label('categories', 'Categories')}}
+                                {{Form::select('categories', [$translation['pivot']['category_id'] => $translation['pivot']['name']])}}
+                            @endif
+
                         @endif
                     @endforeach
                 @endforeach
