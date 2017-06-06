@@ -1,0 +1,119 @@
+.navbar-default
+{
+    background-color: black;
+    color: white;
+}
+
+#menu .navbar-default {
+    border: unset;
+    display: -webkit-flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+
+#menu, #menu nav ul li .dropdown-menu {
+    background-color: black;
+    border: unset;
+}
+
+#menu a {
+    color: white;
+}
+
+#menu a:hover, #menu a:focus, #menu ul .active a {
+    background-color: unset;
+    color: #fd7b30;
+    border: none;
+}
+
+#menu ul .open a {
+    background-color: unset;
+    border: unset;
+}
+
+@media screen and (min-width: 1025px) {
+    body {
+        background-color: #2ab27b;
+    }
+}
+#menu ul .active a:hover {
+
+    color: #fd7b30;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #fd7b30;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #151414;
+    border-color: #fd7b30;
+    color: #fd7b30;
+}
+.navbar-default .navbar-toggle {
+     color: white;
+ }
+
+#part-01
+{
+    background: url("../images/header-img.jpg") no-repeat center center;
+    height: 1255px;
+    width: 100%;
+    background-size: cover;
+    -webkit-transition: height 1s;
+
+}
+
+#red-flag
+{
+    width: 286px;
+    height: 226px;
+    background: url("../images/red flag 2.png") no-repeat;
+    margin: 0 auto;
+    background-position-y: -100px;
+}
+
+#logo
+{
+    width: 239px;
+    background: url("../images/elektromarkt.png") no-repeat;
+    margin: 0 auto;
+    height: 210px;
+    background-size: contain;
+    background-position-y: 130px;
+    background-position-x: -2px;
+    color: #FF958B;
+    font-size: 18px;
+    padding-top: 99px;
+    text-align: center;
+}
+
+#menu
+{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+#title
+{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 10vw;
+    text-align: center;
+    text-transform: uppercase;
+    color: #f2f2f2;
+    text-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    transform: scale(0.9, 1.2);
+    -webkit-transition: height 1s;
+}
+#sentence
+{
+    font-family: Titillium;
+    width: 323px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: coral;
+    font-size: 16.8px;
+    color: white;
+    text-align: center;
+    -webkit-transition: height 1s;
+}

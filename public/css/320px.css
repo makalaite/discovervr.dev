@@ -1,0 +1,22 @@
+@media screen and (max-width: 320px) {
+    body {
+        background-color: rebeccapurple;
+
+
+    }
+
+    #sentence
+    {
+        margin-top: 563px;
+        width: 264px;
+        -webkit-transition: margin-top 1s;
+    }
+
+    #title
+    {
+        margin-top: 48px;
+        -webkit-transition: margin-top 1s;
+
+    }
+}
+

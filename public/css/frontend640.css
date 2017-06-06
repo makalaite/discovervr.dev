@@ -1,0 +1,90 @@
+/*********************************************************************************
+************************************ TEST ****************************************
+*********************************************************************************/
+
+@media screen and (max-width: 767px) {
+    body {
+        background-color: orange;
+    }
+
+    /* collapse button */
+    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+        background-color: black;
+        color: darkorange;
+        border-color: darkorange;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: white;
+    }
+
+    .navbar-toggle:hover .icon-bar {
+        background-color: darkorange;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover, .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+        color: darkorange;
+    }
+
+    #discover-vr {
+        margin-top: 80px;
+        width: 80%;
+        font-size: 10vw;
+    }
+
+    #title-page-text-block {
+        background-color: #FD7B52;
+        text-align: center;
+        color: white;
+        font-size: 17px;
+        padding: 5px 20px 0px 20px;
+        width: 340px;
+        min-width: 340px;
+        margin: 0 auto;
+        margin-top: 420px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    body {
+        background-color: orange;
+    }
+
+    /* collapse button */
+    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+        background-color: black;
+        color: darkorange;
+        border-color: darkorange;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: white;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: white;
+    }
+
+    .navbar-toggle:hover .icon-bar {
+        background-color: darkorange;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover, .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+        color: darkorange;
+    }
+
+    #home {
+        height: 800px;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+    }
+
+    #discover-vr {
+        margin-top: 40px;
+    }
+
+    #title-page-text-block {
+        margin-top: 100px;
+        padding: 0;
+    }
+}

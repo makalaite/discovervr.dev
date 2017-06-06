@@ -1,0 +1,20 @@
+@media screen and (max-width: 640px) {
+    #part-01 {
+        height: 986px;
+        background: url("../images/header-img.jpg") no-repeat center center;
+        width: 100%;
+        background-size: cover;
+    }
+
+    #sentence
+    {
+        margin-top: 561px;
+        -webkit-transition: margin-top 1s;
+    }
+
+    #title
+    {
+        -webkit-transition: height 1s;
+    }
+}
+

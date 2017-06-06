@@ -18,9 +18,7 @@ class CreateVrMenuTable extends Migration {
 			$table->string('id', 36)->unique('id_UNIQUE');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->string('url');
 			$table->string('new_window')->nullable();
-			$table->string('name')->nullable();
 			$table->string('sequence');
 			$table->string('vr_parent_id', 36)->nullable()->index('fk_vr_menu_vr_menu1_idx');
 		});

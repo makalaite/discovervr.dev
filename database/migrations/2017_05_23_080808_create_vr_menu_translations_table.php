@@ -18,7 +18,8 @@ class CreateVrMenuTranslationsTable extends Migration {
 			$table->string('id', 36)->unique('id_UNIQUE');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->string('name')->nullable();
+            $table->string('url');
+            $table->string('name')->nullable();
 			$table->string('menu_id', 36)->index('fk_vr_menu_translations_vr_menu1_idx');
 			$table->string('language_code', 2)->index('fk_vr_menu_translations_vr_language_codes1_idx');
 		});

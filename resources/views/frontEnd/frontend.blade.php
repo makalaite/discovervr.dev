@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
 
-        @foreach($list as $key => $record  )
+        @foreach($list as $key => $record )
 
             <div class="col-md-2">
                 <ul>
